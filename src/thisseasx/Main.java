@@ -1,6 +1,8 @@
 package thisseasx;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -19,21 +21,23 @@ public class Main {
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ResultSet rs = ps.executeQuery();
-            /*while (rs.next()) {
-                System.out.printf("%s %s %s %s %s %s %s%n",
-                        rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getString(7)
-                );
-            }*/
-            ResultSetPrinter.printResultSet(rs);
+//            failPrint(rs); // The bad way to print a ResultSet.
+            ResultSetPrinter.printResultSet(rs); // The good way to print a ResultSet.
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void failPrint(ResultSet rs) throws SQLException {
+        while (rs.next()) {
+            int columnCount = rs.getMetaData().getColumnCount();
+
+            List<String> list = new ArrayList<>();
+            for (int i = 1; i <= columnCount; i++) list.add(rs.getString(i));
+
+            list.forEach(x -> System.out.print(x + " "));
+            System.out.println();
         }
     }
 }
