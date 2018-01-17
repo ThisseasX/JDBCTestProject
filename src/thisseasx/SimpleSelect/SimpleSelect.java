@@ -1,10 +1,12 @@
-package thisseasx;
+package thisseasx.SimpleSelect;
+
+import thisseasx.ResultSetPrinter.ResultSetPrinter;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class SimpleSelect {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/epicdb?useSSL=false";
     private static final String DB_USERNAME = "root";
