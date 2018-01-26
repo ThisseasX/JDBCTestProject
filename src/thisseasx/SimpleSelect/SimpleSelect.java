@@ -8,16 +8,12 @@ import java.util.List;
 
 public class SimpleSelect {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/epicdb?useSSL=false";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/sales?useSSL=false";
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "123";
 
     public static void main(String[] args) {
-        showTableData("superview");
-    }
-
-    private static void showTableData(String table) {
-        String sql = ("SELECT * FROM " + table);
+        String sql = "SELECT * FROM sales";
 
         try (Connection con = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
              PreparedStatement ps = con.prepareStatement(sql)) {

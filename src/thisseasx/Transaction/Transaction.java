@@ -38,7 +38,7 @@ public class Transaction {
     }
 
     private static void showTableData() throws SQLException {
-        String sql = ("SELECT * FROM transactions");
+        String sql = "SELECT * FROM transactions";
 
         try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
@@ -50,7 +50,7 @@ public class Transaction {
     }
 
     private static void updateTransaction(String where, String set) {
-        String sql = ("UPDATE transactions SET name = ? WHERE name = ?");
+        String sql = "UPDATE transactions SET name = ? WHERE name = ?";
 
         try (PreparedStatement ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
 
@@ -69,7 +69,7 @@ public class Transaction {
     }
 
     private static void insertTransaction(String name, int age) {
-        String sql = ("INSERT INTO transactions values(?, ?)");
+        String sql = "INSERT INTO transactions values(?, ?)";
 
         try (PreparedStatement ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
 
